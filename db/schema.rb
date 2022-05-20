@@ -10,10 +10,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_20_160659) do
+ActiveRecord::Schema.define(version: 2022_05_20_202701) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "places", force: :cascade do |t|
+    t.text "description"
+    t.integer "rating"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+  end
+
+  create_table "publications", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.bigint "place_id", null: false
+    t.index ["place_id"], name: "index_publications_on_place_id"
+    t.index ["user_id"], name: "index_publications_on_user_id"
+  end
+
+  create_table "review_places", force: :cascade do |t|
+    t.string "comment"
+    t.integer "rating"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "place_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["place_id"], name: "index_review_places_on_place_id"
+    t.index ["user_id"], name: "index_review_places_on_user_id"
+  end
+
+  create_table "review_publications", force: :cascade do |t|
+    t.string "comment"
+    t.integer "rating"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "publication_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["publication_id"], name: "index_review_publications_on_publication_id"
+    t.index ["user_id"], name: "index_review_publications_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +68,10 @@ ActiveRecord::Schema.define(version: 2022_05_20_160659) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "publications", "places"
+  add_foreign_key "publications", "users"
+  add_foreign_key "review_places", "places"
+  add_foreign_key "review_places", "users"
+  add_foreign_key "review_publications", "publications"
+  add_foreign_key "review_publications", "users"
 end
