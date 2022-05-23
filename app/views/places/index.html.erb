@@ -3,4 +3,5 @@
   <p><%= place.name %></p>
   <p><%= place.description %></p>
   <p><%= place.rating %></p>
+  <%= link_to "See Place", place_path(place), class: "btn btn-outline-dark" %>
 <% end %>

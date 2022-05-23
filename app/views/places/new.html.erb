@@ -1,0 +1,7 @@
+<h2>new places just for admin</h2>
+<%= simple_form_for @place do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :rating %>
+  <%= f.submit class: "btn btn-outline-primary" %>
+<% end %>
