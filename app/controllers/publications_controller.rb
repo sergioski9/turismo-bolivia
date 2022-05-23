@@ -1,6 +1,7 @@
 class PublicationsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
   before_action :set_publication, only: [ :show, :edit, :update, :destroy ]
+  before_action :set_place, only: [ :new, :create ]
 
   def index
     @publications = Publication.all
@@ -15,8 +16,7 @@ class PublicationsController < ApplicationController
 
   def create
     @publication = Publication.new(publication_params)
-    @place = Place.find(params[:place_id])
-    @publication.place = @place
+    @publication.place_id = @place.id
     @publication.user_id = current_user.id
 
     if @publication.save
@@ -51,5 +51,9 @@ class PublicationsController < ApplicationController
 
   def set_publication
     @publication = Publication.find(params[:id])
+  end
+
+  def set_place
+    @place = Place.find(params[:place_id])
   end
 end
