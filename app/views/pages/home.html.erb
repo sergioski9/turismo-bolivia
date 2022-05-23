@@ -1,2 +1,55 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<article>
+  <section>
+    <div id="carouselExampleFade" class="carousel slide carousel-fade text-shadow" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="9000">
+          <div class="banner-image text-center text-shadow" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(https://res.cloudinary.com/dgzbf6kp2/image/upload/c_scale,h_730,q_100,w_1213/v1653335150/development/home_jualrp.jpg);">
+            <div class="banner-letters">
+              <h1><strong>Bienvenido a TourBol</strong></h1>
+              <p>Infórmese sobre los mejores lugares 🌇 que Bolivia puede ofrecer.</p>
+              <p>Para obtener mas informacion sobre los lugares has clic en el botón ⬇ </p>
+              <%= link_to "Lugares", places_path, class: "my-5 btn btn-outline-light px-5 rounded-pill" %>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="9000">
+          <div class="banner-image text-center text-shadow" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/dgzbf6kp2/image/upload/c_scale,h_730,q_100,w_1213/v1653334439/development/home-real_i9vrcy.jpg);">
+            <div class="banner-letters">
+              <h1><strong>Que Tiene TourBol?</strong></h1>
+              <p>Informacion detallada sobre los lugares mas conocidos, asi como tambien los menos conocidos.</p>
+              <p>Recomendaciones de viaje y equipamiento para ir a los lugares, los cuales te interesan y mucha mas informacion!.</p>
+              <p>Ademas puedes encontrar experiencias de personas que ya han visitado el lugar en la seccion de publicaciones.</p>
+              <%= link_to "Publicaciones", publications_path, class: "my-5 btn btn-outline-light px-5 rounded-pill" %>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item text-center" data-bs-interval="9000">
+          <div class="banner-image text-center text-shadow" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/dgzbf6kp2/image/upload/c_scale,h_730,q_100,w_1213/v1653334449/development/home-real-3_ohvzlr.jpg);">
+            <div class="banner-letters">
+              <h1><strong>Caracteristica de TourBol</strong></h1>
+              <p>Ademas de darte informacion valiosa sobre los lugares turistico de Bolivia.</p>
+              <p>TourBol tiene una seccion de publicaciones sobre negocios de los lugares que quieras visitar!, como:</p>
+              <p>Hoteles, Alojamientos, Cabañas, Restaurantes, Tiendas, Ventas, Recuerdos y mucho mas!</p>
+              <%= link_to "Publicaciones", publications_path, class: "my-5 btn btn-outline-light px-5 rounded-pill" %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </section>
+</article>
+<article>
+  <section>
+    <div>
+
+    </div>
+  </section>
+</article>
