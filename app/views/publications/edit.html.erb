@@ -1,0 +1,6 @@
+<h2>edit the publications</h2>
+<%= simple_form_for [@place, @publication] do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.submit class: "btn btn-outline-primary" %>
+<% end %>

@@ -1,0 +1,6 @@
+<h2>index the publications</h2>
+<% @publications.each do |publication| %>
+  <p><%= publication.title %></p>
+  <p><%= publication.description %></p>
+  <%= link_to "See Publication", publication_path(publication), class: "btn btn-outline-dark" %>
+<% end %>
