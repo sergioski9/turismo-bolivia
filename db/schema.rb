@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_24_135432) do
+ActiveRecord::Schema.define(version: 2022_05_25_010308) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,21 +43,35 @@ ActiveRecord::Schema.define(version: 2022_05_24_135432) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "places", force: :cascade do |t|
     t.text "description"
     t.integer "rating"
+    t.string "city"
+    t.string "name"
+    t.text "recomendation"
+    t.text "how_to_get"
+    t.text "what_to_bring"
+    t.text "other_recomendation"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "name"
   end
 
   create_table "publications", force: :cascade do |t|
     t.string "title"
     t.text "description"
+    t.integer "status", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.bigint "place_id", null: false
+    t.bigint "category_id", null: false
+    t.index ["category_id"], name: "index_publications_on_category_id"
     t.index ["place_id"], name: "index_publications_on_place_id"
     t.index ["user_id"], name: "index_publications_on_user_id"
   end
@@ -73,17 +87,6 @@ ActiveRecord::Schema.define(version: 2022_05_24_135432) do
     t.index ["user_id"], name: "index_review_places_on_user_id"
   end
 
-  create_table "review_publications", force: :cascade do |t|
-    t.string "comment"
-    t.integer "rating"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "publication_id", null: false
-    t.bigint "user_id", null: false
-    t.index ["publication_id"], name: "index_review_publications_on_publication_id"
-    t.index ["user_id"], name: "index_review_publications_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -92,16 +95,20 @@ ActiveRecord::Schema.define(version: 2022_05_24_135432) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "phone_number"
+    t.string "address"
+    t.boolean "whatsapp"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "publications", "categories"
   add_foreign_key "publications", "places"
   add_foreign_key "publications", "users"
   add_foreign_key "review_places", "places"
   add_foreign_key "review_places", "users"
-  add_foreign_key "review_publications", "publications"
-  add_foreign_key "review_publications", "users"
 end
