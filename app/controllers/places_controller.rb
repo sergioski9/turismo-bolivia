@@ -1,5 +1,5 @@
 class PlacesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :index, :show ]
+  skip_before_action :authenticate_user!
   before_action :set_place, only: [ :show, :edit, :update, :destroy ]
 
   def index
@@ -42,7 +42,7 @@ class PlacesController < ApplicationController
   private
 
   def place_params
-    params.require(:place).permit(:name, :description, :rating, :photo)
+    params.require(:place).permit(:name, :description, :city, :recomendation, :how_to_get, :what_to_bring, :other_recomendation, :rating, photos: [])
   end
 
   def set_place

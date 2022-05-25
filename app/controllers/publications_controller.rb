@@ -1,7 +1,6 @@
 class PublicationsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :index, :show ]
+  skip_before_action :authenticate_user!, only: [ :index, :show,  ]
   before_action :set_publication, only: [ :show, :edit, :update, :destroy ]
-  before_action :set_place, only: [ :new, :create ]
 
   def index
     @publications = Publication.all
@@ -12,21 +11,31 @@ class PublicationsController < ApplicationController
 
   def new
     @publication = Publication.new
+    @places = Place.all
+    @categories = Category.all
   end
 
   def create
     @publication = Publication.new(publication_params)
-    @publication.place_id = @place.id
-    @publication.user_id = current_user.id
+    @publication.category_id = params[:publication][:category]
+    @publication.place_id = params[:publication][:place]
 
-    if @publication.save
+    if current_user
+      @publication.user_id = current_user.id
+      @publication.save
+      @publication.active!
+
       redirect_to publication_path(@publication)
     else
-      render :new
+      @publication.save
+
+      redirect_to new_user_registration_path({ id: @publication.id })
     end
   end
 
   def edit
+    @places = Place.all
+    @categories = Category.all
   end
 
   def update
@@ -46,14 +55,10 @@ class PublicationsController < ApplicationController
   private
 
   def publication_params
-    params.require(:publication).permit(:title, :description, photos: [])
+    params.require(:publication).permit(:title, :description, :category_id, :place_id, photos: [])
   end
 
   def set_publication
     @publication = Publication.find(params[:id])
-  end
-
-  def set_place
-    @place = Place.find(params[:place_id])
   end
 end
