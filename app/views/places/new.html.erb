@@ -3,6 +3,10 @@
   <%= f.input :name %>
   <%= f.input :description %>
   <%= f.input :rating %>
-  <%= f.input :photo, as: :file %>
+  <%= f.input :recomendation %>
+  <%= f.input :other_recomendation %>
+  <%= f.input :what_to_bring %>
+  <%= f.input :how_to_get %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   <%= f.submit class: "btn btn-outline-primary" %>
 <% end %>

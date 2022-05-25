@@ -1,7 +1,9 @@
 <h2>edit the publications</h2>
-<%= simple_form_for [@place, @publication] do |f| %>
+<%= simple_form_for @publication do |f| %>
   <%= f.input :title %>
   <%= f.input :description %>
+  <%= f.input :category, as: :select, collection: @categories %>
+  <%= f.input :place, as: :select, collection: @places %>
   <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   <%= f.submit class: "btn btn-outline-primary" %>
 <% end %>
