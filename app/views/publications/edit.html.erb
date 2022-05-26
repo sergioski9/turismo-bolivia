@@ -2,8 +2,8 @@
 <%= simple_form_for @publication do |f| %>
   <%= f.input :title %>
   <%= f.input :description %>
-  <%= f.input :category, as: :select, collection: @categories %>
-  <%= f.input :place, as: :select, collection: @places %>
+  <%= f.input :category_id, as: :select, collection: @categories %>
+  <%= f.input :place_id, as: :select, collection: @places %>
   <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   <%= f.submit class: "btn btn-outline-primary" %>
 <% end %>

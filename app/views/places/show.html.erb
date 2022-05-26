@@ -26,20 +26,90 @@
     </div>
     <div class="container">
       <div class="row">
-        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-          <div class="text-shadow">
-            <h3 class="text-center my-4"><strong><%= @place.name %> - Descripción</strong></h3>
-            <p><%= @place.description %></p>
-            <div class="text-center bg-white p-4">
-              <% @place.rating.to_i.times do %>
-                <i class="fas fa-star star-yellow"></i>
-              <% end %>
-              <h4 class="d-inline-block mx-4 text-shadow"><strong>Reference Stars</strong></h4>
-              <small><em class="text-muted">created <%= distance_of_time_in_words_to_now(@place.created_at) %> ago</em></small>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 my-4">
+          <div class="row justify-content-center text-shadow text-center">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 border-end p-3 my-3">
+              <h3 class="text-center mb-4">
+                <strong><%= @place.name %> - Descripción</strong>
+              </h3>
+              <p class="mt-3"><%= @place.description %></p>
+              <div class="text-center p-4">
+                <% @place.rating.to_i.times do %>
+                  <i class="fas fa-star star-yellow"></i>
+                <% end %>
+                <h4 class="d-inline-block mx-4 text-shadow">
+                  <strong>Reference Stars</strong>
+                </h4>
+                <p>
+                  <small>
+                    <em class="text-muted">
+                      created <%= distance_of_time_in_words_to_now(@place.created_at) %> ago
+                    </em>
+                  </small>
+                </p>
+              </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 border-start p-3 my-3 text-shadow">
+              <h3 class="text-center">
+                <strong>Información Acerca del Lugar</strong>
+              </h3>
+              <div class="row justify-content-between p-4 text-center">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                  <div class="card-place-show-information my-3">
+                    <img src="https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653512120/development/caminar-place_r3yfwl.png" alt="ilustracion caminando">
+                  </div>
+                  <h5><strong>Como Llegar?</strong></h5>
+                  <p class="text-justify"><%= @place.how_to_get %></p>
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                  <div class="card-place-show-information my-3">
+                    <img src="https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653512413/development/llevar-place_dfnsfu.png" alt="ilustracion-mochla">
+                  </div>
+                  <h5><strong>Que Llevar?</strong></h5>
+                  <p class="text-justify"><%= @place.what_to_bring %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="border-top col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-bottom">
+          <div class="container-fluid">
+            <div class="row text-center text-shadow my-5">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="row justify-content-center">
+                  <div class="col-12 col-sm-12 col-md-8 col-lg-7 col-xl-6">
+                    <h3 class="my-4">
+                      <strong>Recomendaciones</strong>
+                    </h3>
+                    <div class="card-place-show-recomendation">
+                      <img src="https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653513660/development/recomendaciones_jrfzwk.png" alt="ilustracion recomendacion">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="border-end col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 my-3">
+                <h5 class="my-3"><strong>Principal</strong></h5>
+                <p><%= @place.recomendation %></p>
+              </div>
+              <div class="border-start col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 my-3">
+                <h5 class="my-3"><strong>Secundaria</strong></h5>
+                <p><%= @place.other_recomendation %></p>
+              </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
+  </section>
+</article>
+<article>
+  <section>
+    <div class="container">
+        <% @place.publications.take(3).each do |publication| %>
+          <% if publication.place.name == @placehelp.name %>
+            <%= publication.title %>
+          <% end %>
+        <% end %>
     </div>
   </section>
 </article>

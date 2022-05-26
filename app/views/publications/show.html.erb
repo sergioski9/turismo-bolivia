@@ -3,3 +3,15 @@
 <p><%= @publication.description %></p>
 <p><%= @publication.category.name %></p>
 <p><%= @publication.place.name %></p>
+<div data-controller="counter">
+  <p>
+    <small>
+      <em class="text-muted">
+      </em>Personas que se han contactado:
+      <b class="count" data-counter-target="show">
+        0
+      </b>
+    </small>
+  </p>
+  <%= link_to "Contactar", "https://api.whatsapp.com/send?phone=+591#{@publication.user.phone_number}&text=Hola,%20vi%20tu%20publicacion%20y%20quisiera%20saber%20mas%20informacion", target: "_blank", class: "link btn btn-outline-primary", data: {action: "click->counter#increaseCounter"} %>
+</div>
