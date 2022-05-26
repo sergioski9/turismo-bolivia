@@ -1,5 +1,5 @@
 class Publication < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, optional: true
   belongs_to :place
   belongs_to :category
 
