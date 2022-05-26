@@ -51,6 +51,20 @@
 .card-category-place {
   width: 100%;
   height: 250px;
-  background-size: contain;
+  background-size: 100%;
   background-repeat: no-repeat;
+}
+
+.card-place-show-information img {
+  width: 100%;
+  height: 140px;
+}
+
+.card-place-show-recomendation img {
+  width: 100%;
+  height: 300px;
+}
+
+.card-publications {
+  border-radius: 20px;
 }
