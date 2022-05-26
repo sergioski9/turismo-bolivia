@@ -105,3 +105,8 @@ place9 = Place.create(
   city: "La Paz",
   rating: 4,
 )
+
+category1 = Category.create(name: "Restaurantes")
+category2 = Category.create(name: "Hoteles")
+category3 = Category.create(name: "Comercio")
+category4 = Category.create(name: "Servicios")
