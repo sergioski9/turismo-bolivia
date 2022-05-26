@@ -9,6 +9,9 @@
               <p>Infórmese sobre los mejores lugares 🌇 que Bolivia puede ofrecer.</p>
               <p>Para obtener mas informacion sobre los lugares has clic en el botón ⬇ </p>
               <%= link_to "Lugares", places_path, class: "my-5 btn btn-outline-light px-5 rounded-pill" %>
+              <div class="container my-4">
+                <p>¡Elige una Ciudad o Lugar para crear tu Publicación en cualquiera de nuestros Sitios!</p>
+              </div>
             </div>
           </div>
         </div>
@@ -51,50 +54,19 @@
     <div class="cards-container row justify-content-center container text-center text-shadow my-5">
       <h2><strong>Los Mejores Lugares en TourBol</strong></h2>
       <p><small><em class="text-muted text-shadow">Presiona la imagen para mas informacion</em></small></p>
-      <div class="my-5 col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3"  data-aos="fade-up" data-aos-duration="2000">
-        <%# cambiar direccion al subir a produccion %>
-        <a href="http://localhost:3000/places/2">
-          <div class="box-shadow cards-home">
-            <div class="text-shadow text-start mx-2 cards-letters-home">
-              <p><b>Salar de uyuni</b></p>
-              <p><b>Potosí</b></p>
+      <% @places.each do |place| %>
+        <div class="my-5 col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3"  data-aos="fade-up" data-aos-duration="2000">
+          <%# cambiar direccion al subir a produccion %>
+          <a href="http://localhost:3000/places/<%= place.id %>">
+            <div class="box-shadow cards-home" style="background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%), url('<%= cl_image_path place.photos.first.key %>');">
+              <div class="text-shadow text-start mx-2 cards-letters-home">
+                <p><b><%= place.name %></b></p>
+                <p><b><%= place.city %></b></p>
+              </div>
             </div>
-          </div>
-        </a>
-      </div>
-      <div class="my-5 col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3"  data-aos="fade-up" data-aos-duration="2000">
-        <%# cambiar direccion al subir a produccion %>
-        <a href="http://localhost:3000/places/2">
-          <div class="box-shadow cards-home">
-            <div class="text-shadow text-start mx-2 cards-letters-home">
-              <p><b>Salar de uyuni</b></p>
-              <p><b>Potosí</b></p>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="my-5 col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3"  data-aos="fade-up" data-aos-duration="2000">
-        <%# cambiar direccion al subir a produccion %>
-        <a href="http://localhost:3000/places/2">
-          <div class="box-shadow cards-home">
-            <div class="text-shadow text-start mx-2 cards-letters-home">
-              <p><b>Salar de uyuni</b></p>
-              <p><b>Potosí</b></p>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="my-5 col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3"  data-aos="fade-up" data-aos-duration="2000">
-        <%# cambiar direccion al subir a produccion %>
-        <a href="http://localhost:3000/places/2">
-          <div class="box-shadow cards-home">
-            <div class="text-shadow text-start mx-2 cards-letters-home">
-              <p><b>Salar de uyuni</b></p>
-              <p><b>Potosí</b></p>
-            </div>
-          </div>
-        </a>
-      </div>
+          </a>
+        </div>
+      <% end %>
     </div>
   </section>
   <section id="informacion">

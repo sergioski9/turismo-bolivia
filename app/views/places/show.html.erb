@@ -105,11 +105,9 @@
 <article>
   <section>
     <div class="container">
-        <% @place.publications.take(3).each do |publication| %>
-          <% if publication.place.name == @placehelp.name %>
-            <%= publication.title %>
-          <% end %>
-        <% end %>
+        <%# <% @publications_top.each do |publication| %>
+
+        <%# <% end %>
     </div>
   </section>
 </article>
