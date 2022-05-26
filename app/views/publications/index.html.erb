@@ -1,17 +1,33 @@
 <article>
   <section>
     <div class="container-fluid">
-      <div class="container row justify-content-center">
-        <% @publications.each do |publication| %>
-          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 card-publications container">
-            <div class="d-flex mx-2">
-              <div class="avatar" style="background-image: url(<%= publication.photo.attached? ? cl_image_path(publication.photo.key) : 'https://res.cloudinary.com/dgzbf6kp2/image/upload/v1652472231/development/ivoevb9zgmyu06e2bxa6zwf45kqt.jpg' %>)"></div>
+      <div class="text-shadow">
+        <h2 class="text-center my-5"><strong>Conoce Todas las Publicaciones de los Usuarios de TourBol!</strong></h2>
+        <div class="row justify-content-center">
+          <% @publications.each do |publication| %>
+            <div class="my-4 mx-4 box-shadow bg-white col-11 col-sm-11 col-md-5 col-lg-5 col-xl-4 card-publications" data-aos="fade-up" data-aos-duration="2000">
+              <div class="d-flex mr-2 my-2">
+                <div class="avatar-publications mx-2" style="background-image: url(<%= publication.user.photo.attached? ? cl_image_path(publication.user.photo.key) : 'https://res.cloudinary.com/dgzbf6kp2/image/upload/c_scale,h_1536,w_1920/v1652472231/development/ivoevb9zgmyu06e2bxa6zwf45kqt.jpg' %>)"></div>
+                <div class="container-header-publications">
+                  <h6><%= publication.user.first_name %></h6>
+                  <p><small class="text-muted"><%= publication.place.name %></small></p>
+                </div>
+              </div>
+              <div class="container-photo-publications">
+                <img src="<%= cl_image_path publication.photos.first.key %>" alt="foto-de-publicacion">
+              </div>
+              <div class="my-3 container-letters-publications">
+                <p><%= publication.title.first(30) ... %></p>
+                <p><%= publication.description.first(30) %> ...</p>
+                <p class="border-top border-bottom py-2 my-3 text-muted">personas que se han contactado: <b>10</b></p>
+                <p class="p-1 text-center"><small><em class="text-muted">Created <%=  distance_of_time_in_words_to_now(publication.created_at) %></em></small></p>
+                <div class="text-center">
+                  <%= link_to "Ver Publicacion", publication_path(publication), class: "mt-3 btn btn-outline-info" %>
+                </div>
+              </div>
             </div>
-            <p><%= publication.title %></p>
-            <p><%= publication.description %></p>
-            <%= link_to "See Publication", publication_path(publication), class: "btn btn-outline-dark" %>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
   </section>

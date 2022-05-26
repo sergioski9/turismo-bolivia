@@ -1,9 +1,22 @@
-<h2>edit the publications</h2>
-<%= simple_form_for @publication do |f| %>
-  <%= f.input :title %>
-  <%= f.input :description %>
-  <%= f.input :category_id, as: :select, collection: @categories %>
-  <%= f.input :place_id, as: :select, collection: @places %>
-  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-  <%= f.submit class: "btn btn-outline-primary" %>
-<% end %>
+<div class="container py-5 my-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-12 col-md-8 col-lg-6 col-xl-6">
+      <div class="text-shadow bg-white rounded p-3 shadow">
+        <div class="banner-new-publication">
+          <img src="https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653538122/development/pensando-edit_zwnxcq.png" alt="ilustracion pensando">
+        </div>
+        <h3 class="text-shadow text-center my-4">Edita tu Publicación</h3>
+        <%= simple_form_for @publication, wrapper: :floating_labels_form, wrapper_mappings: {
+    select: :floating_labels_select} do |f| %>
+          <%= f.input :title, label: "Título", placeholder: "Título" %>
+          <%= f.input :description, label: "Descripción", placeholder: "Descripción" %>
+          <%= f.input :category_id, as: :select, collection: @categories, label: "Categorias", placeholder: "Elegir el lugar de la Publicación" %>
+          <%= f.input :place_id, as: :select, collection: @places, label: "Lugares", placeholder: "Elegir la categoria de su Publicación" %>
+          <%= f.input :photos, label: "Fotos (Máximo 3)", as: :file, input_html: { multiple: true } %>
+          <%= f.submit class: "btn btn-outline-primary d-inline-block" %>
+          <%= link_to "Regresar", root_path, class: "btn btn-outline-primary d-inline-block mx-4 px-4"  %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
