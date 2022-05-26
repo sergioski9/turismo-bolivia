@@ -7,10 +7,12 @@ class PlacesController < ApplicationController
   end
 
   def show
+    @placehelp = Place.find(params[:id])
   end
 
   def new
     @place = Place.new
+    @cities = ["Santa Cruz de la Sierra", "Potosí", "Oruro", "Pando", "Beni", "Tarija", "Sucre", "La Paz", "Cochabamba"]
   end
 
   def create

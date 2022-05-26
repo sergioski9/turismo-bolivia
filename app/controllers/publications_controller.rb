@@ -1,6 +1,6 @@
 class PublicationsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :index, :show,  ]
-  before_action :set_publication, only: [ :show, :edit, :update, :destroy ]
+  skip_before_action :authenticate_user!, except: [:edit, :destroy]
+  before_action :set_publication, only: [ :show, :edit, :update, :destroy, :increase_counter ]
 
   def index
     @publications = Publication.all
@@ -13,24 +13,17 @@ class PublicationsController < ApplicationController
     @publication = Publication.new
     @places = Place.all
     @categories = Category.all
+
+    redirect_to new_user_registration_path if current_user.nil?
   end
 
   def create
     @publication = Publication.new(publication_params)
-    @publication.category_id = params[:publication][:category]
-    @publication.place_id = params[:publication][:place]
+    @publication.user_id = current_user.id
+    @publication.save
+    @publication.active!
 
-    if current_user
-      @publication.user_id = current_user.id
-      @publication.save
-      @publication.active!
-
-      redirect_to publication_path(@publication)
-    else
-      @publication.save
-
-      redirect_to new_user_registration_path({ id: @publication.id })
-    end
+    redirect_to publication_path(@publication)
   end
 
   def edit
@@ -50,6 +43,11 @@ class PublicationsController < ApplicationController
     @publication.destroy
 
     redirect_to publications_path
+  end
+
+  def increase_counter
+    @publication.update(counter: params[:value]) if params[:value]
+    render json
   end
 
   private
