@@ -7,7 +7,7 @@ class PlacesController < ApplicationController
   end
 
   def show
-    @placehelp = Place.find(params[:id])
+    @publications_top = @place.top_3
   end
 
   def new
