@@ -12,6 +12,16 @@ export default class extends Controller {
     let count = parseInt(this.showTarget.innerText)
     count = count + 1
     console.log('count: ', count)
-    this.showTarget.innerHTML = count
+    this.saveInDatabase(count)
+  }
+
+  saveInDatabase(value){
+    Rails.ajax({
+      url: 'action',
+      type: 'POST',
+      success: (data) => {
+        this.showTarget.innerHTML = value
+      },
+    });
   }
 }
