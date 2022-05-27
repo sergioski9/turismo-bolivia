@@ -7,7 +7,7 @@ class ReviewPlacesController < ApplicationController
     @review_place.user_id = current_user.id
 
     if @review_place.save
-      redirect_to place_path(@place)
+      redirect_to place_path(@place, anchor: "reviews")
     else
       render "places/show"
     end

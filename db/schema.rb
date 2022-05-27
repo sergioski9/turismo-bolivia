@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 2022_05_25_010308) do
     t.integer "status", default: 1
     t.float "latitude"
     t.float "longitude"
-    t.integer "counter"
+    t.integer "counter", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"

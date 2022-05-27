@@ -4,7 +4,7 @@ class PlacesController < ApplicationController
 
   def index
     @places = Place.all
-    @city = @places.where(city: params[:city]) if params[:city].present?
+    @city = Place.where(city: params[:city]) if params[:city].present?
     sql_query = " \
         places.name @@ :query \
         OR places.description @@ :query \
@@ -15,6 +15,7 @@ class PlacesController < ApplicationController
 
   def show
     @publications_top = @place.top_3
+    @review = ReviewPlace.new(place: @place)
     @markers = @place.publications.geocoded.map do |place|
       {
         lat: place.latitude,
@@ -39,6 +40,7 @@ class PlacesController < ApplicationController
   end
 
   def edit
+    @cities = ["Santa Cruz de la Sierra", "Potosí", "Oruro", "Pando", "Beni", "Tarija", "Sucre", "La Paz", "Cochabamba"]
   end
 
   def update

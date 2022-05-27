@@ -1,49 +1,66 @@
-<h2>Sign up</h2>
+<div class="container">
+  <div class="container-fluid my-5 row">
+    <div class="banner-margin col-12 col-md-12 col-lg-8 col-xl-6">
+      <div class="bg-white rounded p-3 box-shadow">
+        <div class="banner-login">
+          <img src="https://res.cloudinary.com/dgzbf6kp2/image/upload/v1652721221/development/login_euom9u.jpg" alt="ilustracion-registro">
+        </div>
+        <h2 class="text-center text-shadow my-3">¡Únete a Tourbol, Registrandote!</h2>
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), wrapper: :floating_labels_form, wrapper_mappings: {
+    select: :floating_labels_select}) do |f| %>
+          <%= f.error_notification %>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+          <div class="form-inputs">
+            <%= f.input :first_name,
+                        label: "Nombre",
+                        placeholder: "Sergio",
+                        required: true,
+                        autofocus: true,
+                        input_html: { autocomplete: "first-name" }%>
+            <%= f.input :last_name,
+                        label: "Apellidos",
+                        required: true,
+                        placeholder: "Rodas Cruz",
+                        autofocus: true,
+                        input_html: { autocomplete: "last-name" }%>
+            <%= f.input :phone_number,
+                        label: "Numero de Telefono",
+                        placeholder: "Ejemplo: 75028115",
+                        required: true,
+                        autofocus: true,
+                        input_html: { autocomplete: "last-name" }%>
+            <%= f.input :whatsapp,
+                        label: "Tiene Whatsapp?",
+                        required: true,
+                        autofocus: true,
+                        input_html: { autocomplete: "last-name" }%>
+            <%= f.input :photo,
+                        as: :file,
+                        label: "Foto de Perfil" %>
+            <%= f.input :email,
+                        required: true,
+                        placeholder: "asdfgh123x20@gmail.com",
+                        autofocus: true,
+                        input_html: { autocomplete: "email" }%>
+            <%= f.input :password,
+                        placeholder: "Contraseña",
+                        required: true,
+                        hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                        input_html: { autocomplete: "new-password" } %>
+            <%= f.input :password_confirmation,
+                        placeholder: "Confirmar",
+                        required: true,
+                        input_html: { autocomplete: "new-password" } %>
+          </div>
 
-  <div class="form-inputs">
-    <%= f.input :first_name,
-                label: "Nombre",
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "first-name" }%>
-    <%= f.input :last_name,
-                label: "Apellidos",
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "last-name" }%>
-    <%= f.input :phone_number,
-                label: "Numero de Telefono",
-                placeholder: "Ejemplo: 75028115",
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "last-name" }%>
-    <%= f.input :whatsapp,
-                label: "Tiene Whatsapp?",
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "last-name" }%>
-    <%= f.input :photo,
-                as: :file,
-                label: "Foto de Perfil" %>
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
+          <div class="form-actions">
+            <%= f.button :submit, "Registrarse", class: "my-3" %>
+          </div>
+        <% end %>
+
+        <%= render "devise/shared/links" %>
+
+      </div>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
