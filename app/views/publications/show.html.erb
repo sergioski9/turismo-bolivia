@@ -61,7 +61,7 @@
         </div>
         <div data-controller="counter" class="my-5 container" data-counter-id-value="<%= @publication.id %>">
           <div class="text-center p-2 margin-auto rounded-pill my-5 tags-publications d-inline-block px-5">
-            <p class="my-1">personas que se han contactado: <b><%= @publication.counter %></b></p>
+            <p class="my-1">personas que se han contactado: <b class="count" data-counter-target="show"><%= @publication.counter %></b></p>
           </div>
           <%= link_to "Contactar", "https://api.whatsapp.com/send?phone=+591#{@publication.user.phone_number}&text=Hola,%20vi%20tu%20publicacion%20y%20quisiera%20saber%20mas%20informacion", target: "_blank", class: "link px-5 btn btn-outline-dark rounded-pill", data: {action: "click->counter#increaseCounter"} %>
         </div>

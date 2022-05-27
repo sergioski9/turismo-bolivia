@@ -38,12 +38,12 @@
                   <i class="fas fa-star star-yellow"></i>
                 <% end %>
                 <h4 class="d-inline-block mx-4 text-shadow">
-                  <strong>Reference Stars</strong>
+                  <strong>Estrellas del Destino</strong>
                 </h4>
                 <p>
                   <small>
                     <em class="text-muted">
-                      created <%= distance_of_time_in_words_to_now(@place.created_at) %> ago
+                      creado <%= distance_of_time_in_words_to_now(@place.created_at) %> aprox.
                     </em>
                   </small>
                 </p>
@@ -83,14 +83,14 @@
             <div id="reviews" class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-5 px-4">
               <h3 class="text-shadow">Reviews</h3>
               <% if @place.review_places.empty? %>
-                <small><em class="text-muted">Be the first one to review this place</em></small>
+                <small><em class="text-muted">¡Sé el primero en dejar una review de este lugar!</em></small>
               <% end %>
               <% @place.review_places.last(3).each do |review| %>
                 <div>
                   <% review.rating.times do %>
                     <i class="fas fa-star star-yellow"></i>
                   <% end %>
-                  <small><em class="text-muted"><%= distance_of_time_in_words_to_now(review.created_at) %> ago</em></small>
+                  <small><em class="text-muted">creado <%= distance_of_time_in_words_to_now(review.created_at) %> aprox.</em></small>
                   <p id="review-<%= review.id %>" class="mb-0 text-shadow"><%= review.comment %></p>
                 </div>
                 <hr>
@@ -98,7 +98,7 @@
             </div>
             <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-5">
               <div class="bg-white rounded p-3">
-                <h5 class="text-shadow">Add your review</h5>
+                <h5 class="text-shadow">Agrega tu review</h5>
                 <%= simple_form_for([@place, @review], remote: true) do |f| %>
                   <%= f.input :comment, placeholder: "Add your review here...", class: "text-shadow" %>
                   <%= f.input :rating, as: :select, collection: (1..5), required: true, prompt: "What's your rating",  class: "text-shadow", input_html: { data: { controller: "jquery-bar-rating" } } %>
