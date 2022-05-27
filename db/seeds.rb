@@ -203,33 +203,44 @@ user1 = User.create(
   first_name: "Anderson",
   last_name: "Rodas Morant",
   phone_number: "75028136",
-  whatsapp: true,
+  whatsapp: true
 )
+
+file = URI.open("https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653611901/production/perfil1_vxjhej.jpg")
+user1.photo.attach(io: file, filename: "perfil1_vxjhej.jpg")
 
 user2 = User.create(
   email: "rodascruzsergio@gmail.com",
   first_name: "Sergio",
   last_name: "Cruz",
   phone_number: "69152811",
-  whatsapp: true,
+  whatsapp: true
 )
+
+file2 = URI.open("https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653611908/production/perfil2_mj2vtg.jpg")
+user2.photo.attach(io: file2, filename: "perfil2_mj2vtg.jpg")
 
 user3 = User.create(
   email: "bebichavez5@gmail.com",
   first_name: "Roxana",
   last_name: "Chavez Ortuño",
   phone_number: "78192530",
-  whatsapp: true,
+  whatsapp: true
 )
+
+file3 = URI.open("https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653611919/production/perfil3_obrp0f.jpg")
+user3.photo.attach(io: file3, filename: "perfil3_obrp0f.jpg")
 
 user4 = User.create(
   email: "oscar.d.rodas@gmail.com",
   first_name: "Julio",
   last_name: "Montenegro",
   phone_number: "78451236",
-  whatsapp: false,
+  whatsapp: false
 )
 
+file4 = URI.open("https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653611925/production/perfil4_dyac73.jpg")
+user4.photo.attach(io: file4, filename: "perfil4_dyac73.jpg")
 
 publication_1 = Publication.create(
   title: "Venta de Recuerdos",
@@ -240,6 +251,15 @@ publication_1 = Publication.create(
   category_id: category3.id
 )
 
+e_counter = 0
+["https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653612583/development/publi1.jpg",
+"https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653612587/development/publi2.jpg",
+"https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653612590/development/publi3.jpg"].map do |image|
+  e_counter += 1
+  file = URI.open(image)
+  publication_1.photos.attach(io: file, filename: "publi#{e_counter}.jpg")
+end
+
 publication_2 = Publication.create(
   title: "Alquiler de Casa",
   status: 1,
@@ -248,6 +268,10 @@ publication_2 = Publication.create(
   place_id: place3.id,
   category_id: category4.id
 )
+
+file = URI.open("https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653612777/development/alquiler_gbrd1k.jpg")
+publication_2.photos.attach(io: file, filename: "alquiler_gbrd1k.jpg")
+
 
 publication_3 = Publication.create(
   title: "Restaurante la Vanidosa",
@@ -258,6 +282,10 @@ publication_3 = Publication.create(
   category_id: category1.id
 )
 
+file = URI.open("https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653612924/development/restau_ipbsgk.jpg")
+publication_3.photos.attach(io: file, filename: "restau_ipbsgk.jpg")
+
+
 publication_4 = Publication.create(
   title: "Servicio de Guía",
   status: 1,
@@ -266,6 +294,14 @@ publication_4 = Publication.create(
   place_id: place6.id,
   category_id: category5.id
 )
+
+e_counter = 0
+["https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653613079/development/guia1.jpg",
+"https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653613083/development/guia2.jpg"].map do |image|
+  e_counter += 1
+  file = URI.open(image)
+  publication_4.photos.attach(io: file, filename: "guia#{e_counter}.jpg")
+end
 
 publication_5 = Publication.create(
   title: "Gasolineria Cordillera",
@@ -276,6 +312,9 @@ publication_5 = Publication.create(
   category_id: category5.id
 )
 
+file = URI.open("https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653613201/development/gaso_sbbawz.jpg")
+publication_5.photos.attach(io: file, filename: "gaso_sbbawz.jpg")
+
 publication_6 = Publication.create(
   title: "Alojamiento Granada",
   description: "Tenemos habitaciones desde 80bs hasta 150bs por cada noche que se quede a dormir.",
@@ -284,6 +323,14 @@ publication_6 = Publication.create(
   place_id: place5.id,
   category_id: category2.id
 )
+
+e_counter = 0
+["https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653613307/development/aloja1.jpg",
+"https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653613341/development/aloja2.jpg"].map do |image|
+  e_counter += 1
+  file = URI.open(image)
+  publication_6.photos.attach(io: file, filename: "aloja#{e_counter}.jpg")
+end
 
 publication_7 = Publication.create(
   title: "Venta de Ropa",
@@ -294,6 +341,14 @@ publication_7 = Publication.create(
   category_id: category3.id
 )
 
+e_counter = 0
+["https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653613464/development/ropa1.jpg",
+"https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653613468/development/ropa2.jpg"].map do |image|
+  e_counter += 1
+  file = URI.open(image)
+  publication_7.photos.attach(io: file, filename: "ropa#{e_counter}.jpg")
+end
+
 publication_8 = Publication.create(
   title: "Cabaña en Alquiler",
   description: "Rento cabaña hermosa en la zona, por tan solo 300bs el dia, el dia comienza desde las 7:00 am",
@@ -302,6 +357,9 @@ publication_8 = Publication.create(
   place_id: place9.id,
   category_id: category4.id
 )
+
+file = URI.open("https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653613589/development/caba.jpg")
+publication_8.photos.attach(io: file, filename: "caba.jpg")
 
 publication_9 = Publication.create(
   title: "Restaurante Espejillos",
@@ -312,6 +370,9 @@ publication_9 = Publication.create(
   category_id: category1.id
 )
 
+file = URI.open("https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653613709/development/espejo_oywgjf.jpg")
+publication_9.photos.attach(io: file, filename: "espejo_oywgjf.jpg")
+
 publication_10 = Publication.create(
   title: "Venta de productos Varios",
   description: "Vendemos toda clase de productos, durante todo el dia, tambien vendemos coca machucada y tenemos delivery.",
@@ -320,3 +381,6 @@ publication_10 = Publication.create(
   place_id: place3.id,
   category_id: category3.id
 )
+
+file = URI.open("https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653613797/development/tienda3_x3weoi.jpg")
+publication_10.photos.attach(io: file, filename: "tienda3_x3weoi.jpg")
