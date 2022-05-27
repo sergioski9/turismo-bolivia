@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
+    <%= link_to root_path, class: "navbar-brand" do %>
       <h4 class="mt-1">TourBol</h4>
     <% end %>
 
@@ -13,7 +13,7 @@
         <%= text_field_tag :query,
         params[:query],
         class: "form-control",
-        placeholder: "Search Places"
+        placeholder: "Buscar Lugares"
       %>
        <button type="submit" class="btn btn-light"><i class="fas fa-search"></i></button>
       </div>
@@ -32,12 +32,17 @@
             <%= link_to "Publicaciones", publications_path, class: "nav-link", style: "color: white" %>
           </li>
           <li class="nav-item dropdown">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Action", "#", class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
-              <%= link_to "Cerrar Sesion", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-            </div>
+            <% if current_user.photo.attached? %>
+              <%= image_tag "#{cl_image_path current_user.photo.key}", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <%= link_to "Cerrar Sesion", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+              </div>
+            <% else %>
+              <%= image_tag "https://res.cloudinary.com/dgzbf6kp2/image/upload/c_scale,h_200,w_200/v1652472231/development/ivoevb9zgmyu06e2bxa6zwf45kqt.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <%= link_to "Cerrar Sesion", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+              </div>
+            <% end %>
           </li>
         <% else %>
           <li class="nav-item active">

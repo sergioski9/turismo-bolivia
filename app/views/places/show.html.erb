@@ -48,6 +48,12 @@
                   </small>
                 </p>
               </div>
+              <div class="container p-4 text-center">
+                <h4><strong>¡Crea una Publicacion para este Lugar!</strong></h4>
+                <p><small class="text-muted">Crea una publicacion ya sea para compartir tus experiencias con este Lugar, o Compartir un negocio, restaurante, hotel, etc.</small></p>
+                <p><small>¡Para que tu negocio sea visible para todos los turistas!.</small></p>
+                <%= link_to "Crear Publicacion", new_publication_path, class: "btn btn-outline-primary" %>
+              </div>
             </div>
             <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 border-start p-3 my-3 text-shadow">
               <h3 class="text-center">
@@ -104,10 +110,37 @@
 </article>
 <article>
   <section>
-    <div class="container">
-        <%# <% @publications_top.each do |publication| %>
-
-        <%# <% end %>
+    <h3 class="text-center text-shadow my-5"><strong>¡Top 3 Publicaciones, con las que los usuarios mas se han Contactado!</strong></h3>
+    <div class="container row justify-content-center">
+      <% @publications_top.each do |publication| %>
+        <div class="my-4 mx-4 box-shadow bg-white col-11 col-sm-11 col-md-5 col-lg-5 col-xl-4 card-publications" data-aos="fade-up" data-aos-duration="2000">
+          <div class="d-flex mr-2 my-2">
+            <div class="avatar-publications mx-2" style="background-image: url(<%= publication.user.photo.attached? ? cl_image_path(publication.user.photo.key) : 'https://res.cloudinary.com/dgzbf6kp2/image/upload/c_scale,h_1536,w_1920/v1652472231/development/ivoevb9zgmyu06e2bxa6zwf45kqt.jpg' %>)"></div>
+            <div class="container-header-publications">
+              <h6><%= publication.user.first_name %></h6>
+              <p><small class="text-muted"><%= publication.place.name %></small></p>
+            </div>
+          </div>
+          <div class="container-photo-publications">
+            <img src="<%= cl_image_path publication.photos.first.key %>" alt="foto-de-publicacion">
+          </div>
+          <div class="my-3 container-letters-publications">
+            <p><%= publication.title.first(30) ... %></p>
+            <p><%= publication.description.first(30) %> ...</p>
+            <p class="border-top border-bottom py-2 my-3 text-muted">personas que se han contactado: <b>10</b></p>
+            <p class="p-1 text-center"><small><em class="text-muted">Created <%=  distance_of_time_in_words_to_now(publication.created_at) %></em></small></p>
+            <div class="text-center">
+              <%= link_to "Ver Publicacion", publication_path(publication), class: "mt-3 btn btn-outline-info" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="container-fluid text-shadow">
+      <h4 class="text-center my-5 text-shadow"><strong>Ver todas las Publicaciones</strong></h4>
+      <div class="text-center">
+        <%= link_to "Ver Publicaciones", publications_path, class: "px-4 btn btn-outline-primary" %>
+      </div>
     </div>
   </section>
 </article>

@@ -13,7 +13,7 @@
           <%= f.input :category_id, as: :select, collection: @categories, label: "Categorias", placeholder: "Elegir el lugar de la Publicación" %>
           <%= f.input :place_id, as: :select, collection: @places, label: "Lugares", placeholder: "Elegir la categoria de su Publicación" %>
           <%= f.input :photos, label: "Fotos (Máximo 3)", as: :file, input_html: { multiple: true } %>
-          <%= f.submit class: "btn btn-outline-primary d-inline-block" %>
+          <%= f.submit class: "btn btn-outline-primary d-inline-block", value: "Crear Publicación" %>
           <%= link_to "Regresar", root_path, class: "btn btn-outline-primary d-inline-block mx-4 px-4"  %>
         <% end %>
       </div>
