@@ -27,6 +27,13 @@
               <p>Recomendaciones de viaje y equipamiento para ir a los lugares, los cuales te interesan y mucha mas informacion!.</p>
               <p>Ademas puedes encontrar experiencias de personas que ya han visitado el lugar en la seccion de publicaciones.</p>
               <%= link_to "Publicaciones", publications_path, class: "my-5 btn btn-outline-light px-5 rounded-pill" %>
+              <div class="container my-4">
+                <p><small><em>¡Elige una Ciudad para ver todos los Lugares que puedes Visitar!</em></small></p>
+                <p><b>⬇</b></p>
+                <%= form_tag places_path, method: 'get' do %>
+                  <%= select_tag(:city, options_for_select(@cities, selected: params[:option]), onchange: 'this.form.submit();', class: "form-control custom-select form-select",id: "form-home", prompt: 'Seleccionar Ciudad', include_blank: true ) %>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
@@ -38,6 +45,13 @@
               <p>TourBol tiene una seccion de publicaciones sobre negocios de los lugares que quieras visitar!, como:</p>
               <p>Hoteles, Alojamientos, Cabañas, Restaurantes, Tiendas, Ventas, Recuerdos y mucho mas!</p>
               <%= link_to "Publicaciones", publications_path, class: "my-5 btn btn-outline-light px-5 rounded-pill" %>
+              <div class="container my-4">
+                <p><small><em>¡Elige una Ciudad para ver todos los Lugares que puedes Visitar!</em></small></p>
+                <p><b>⬇</b></p>
+                <%= form_tag places_path, method: 'get' do %>
+                  <%= select_tag(:city, options_for_select(@cities, selected: params[:option]), onchange: 'this.form.submit();', class: "form-control custom-select form-select",id: "form-home", prompt: 'Seleccionar Ciudad', include_blank: true ) %>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>

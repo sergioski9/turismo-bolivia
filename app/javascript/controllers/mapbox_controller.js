@@ -14,7 +14,7 @@ export default class extends Controller {
   connect() {
     const isNewMarker = this.newMarkerValue
     const markers = isNewMarker
-      ? [{ lat: -17.7834936, lng: -63.1820853 }]
+      ? [{ lat: -17.393709547314216, lng: -66.1563794665114 }]
       : this.markersValue;
 
     mapboxgl.accessToken = this.apiKeyValue;
