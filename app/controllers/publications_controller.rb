@@ -7,6 +7,7 @@ class PublicationsController < ApplicationController
   end
 
   def show
+    @curret_publi = Publication.find(params[:id])
   end
 
   def new

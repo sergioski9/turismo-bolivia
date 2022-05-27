@@ -195,4 +195,128 @@ end
 category1 = Category.create(name: "Restaurantes")
 category2 = Category.create(name: "Hoteles")
 category3 = Category.create(name: "Comercio")
-category4 = Category.create(name: "Servicios")
+category4 = Category.create(name: "Alquileres")
+category5 = Category.create(name: "Servicios")
+
+user1 = User.create(
+  email: "asdfgh123x20@gmail.com",
+  first_name: "Anderson",
+  last_name: "Rodas Morant",
+  phone_number: "75028136",
+  whatsapp: true,
+)
+
+user2 = User.create(
+  email: "rodascruzsergio@gmail.com",
+  first_name: "Sergio",
+  last_name: "Cruz",
+  phone_number: "69152811",
+  whatsapp: true,
+)
+
+user3 = User.create(
+  email: "bebichavez5@gmail.com",
+  first_name: "Roxana",
+  last_name: "Chavez Ortuño",
+  phone_number: "78192530",
+  whatsapp: true,
+)
+
+user4 = User.create(
+  email: "oscar.d.rodas@gmail.com",
+  first_name: "Julio",
+  last_name: "Montenegro",
+  phone_number: "78451236",
+  whatsapp: false,
+)
+
+
+publication_1 = Publication.create(
+  title: "Venta de Recuerdos",
+  description:"Vendemos todo tipo de recuerdos del lugar, pueden pasar a visitarnos para llevarse lindos recuerdos del lugar.",
+  status: 1,
+  user_id: user1.id,
+  place_id: place2.id,
+  category_id: category3.id
+)
+
+publication_2 = Publication.create(
+  title: "Alquiler de Casa",
+  status: 1,
+  description: "Estamos alquilando una casa para turistas, durante 1 semana, el tiempo se puede alargar si lo desean",
+  user_id: user2.id,
+  place_id: place3.id,
+  category_id: category4.id
+)
+
+publication_3 = Publication.create(
+  title: "Restaurante la Vanidosa",
+  status: 1,
+  description: "Vendemos todo tipo de comida tipica, abrimos desde las 11:00am hasta las 16:00pm, en las noches abrimos de 18:00 hasta las 23:00pm",
+  user_id: user3.id,
+  place_id: place5.id,
+  category_id: category1.id
+)
+
+publication_4 = Publication.create(
+  title: "Servicio de Guía",
+  status: 1,
+  description: "Brindo mis servicios de guia por todo el dia, cobro 200bs el dia desde las 7:00am hasta las 18:00pm",
+  user_id: user4.id,
+  place_id: place6.id,
+  category_id: category5.id
+)
+
+publication_5 = Publication.create(
+  title: "Gasolineria Cordillera",
+  status: 1,
+  description: "Somos una estacio de servicio de gasolineria, tambien tenemos tienda para abastecimientos.",
+  user_id: user2.id,
+  place_id: place7.id,
+  category_id: category5.id
+)
+
+publication_6 = Publication.create(
+  title: "Alojamiento Granada",
+  description: "Tenemos habitaciones desde 80bs hasta 150bs por cada noche que se quede a dormir.",
+  status: 1,
+  user_id: user1.id,
+  place_id: place5.id,
+  category_id: category2.id
+)
+
+publication_7 = Publication.create(
+  title: "Venta de Ropa",
+  description: "Vendemos todo clase de ropa desde ropa de verano hasta ropa de invierno abrimos todo el dia desde las 7:00am hasta las 22:pm.",
+  status: 1,
+  user_id: user4.id,
+  place_id: place8.id,
+  category_id: category3.id
+)
+
+publication_8 = Publication.create(
+  title: "Cabaña en Alquiler",
+  description: "Rento cabaña hermosa en la zona, por tan solo 300bs el dia, el dia comienza desde las 7:00 am",
+  status: 1,
+  user_id: user2.id,
+  place_id: place9.id,
+  category_id: category4.id
+)
+
+publication_9 = Publication.create(
+  title: "Restaurante Espejillos",
+  status: 1,
+  description: "Preparamos todo tipo de comida, durante todo el dia, tambien hacemos cena y desayuno. Tenemos delivery para llevar tambien",
+  user_id: user1.id,
+  place_id: place1.id,
+  category_id: category1.id
+)
+
+publication_10 = Publication.create(
+  title: "Venta de productos Varios",
+  description: "Vendemos toda clase de productos, durante todo el dia, tambien vendemos coca machucada y tenemos delivery.",
+  status: 1,
+  user_id: user3.id,
+  place_id: place3.id,
+  category_id: category3.id
+)

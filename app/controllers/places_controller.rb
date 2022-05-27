@@ -4,6 +4,13 @@ class PlacesController < ApplicationController
 
   def index
     @places = Place.all
+    @city = @places.where(city: params[:city]) if params[:city].present?
+    sql_query = " \
+        places.name @@ :query \
+        OR places.description @@ :query \
+        OR places.city @@ :query
+      "
+    @places = Place.where(sql_query, query: "%#{params[:query]}%") if params[:query].present?
   end
 
   def show
