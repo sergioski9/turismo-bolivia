@@ -3,14 +3,18 @@
     <div id="carouselExampleFade" class="carousel slide carousel-fade text-shadow" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active" data-bs-interval="9000">
-          <div class="banner-image text-center text-shadow" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(https://res.cloudinary.com/dgzbf6kp2/image/upload/c_scale,h_730,q_100,w_1213/v1653335150/development/home_jualrp.jpg);">
+          <div class="banner-image text-center text-shadow" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/dgzbf6kp2/image/upload/c_scale,h_730,q_100,w_1213/v1653335150/development/home_jualrp.jpg);">
             <div class="banner-letters">
               <h1><strong>Bienvenido a TourBol</strong></h1>
               <p>Infórmese sobre los mejores lugares 🌇 que Bolivia puede ofrecer.</p>
               <p>Para obtener mas informacion sobre los lugares has clic en el botón ⬇ </p>
               <%= link_to "Lugares", places_path, class: "my-5 btn btn-outline-light px-5 rounded-pill" %>
               <div class="container my-4">
-                <p>¡Elige una Ciudad o Lugar para crear tu Publicación en cualquiera de nuestros Sitios!</p>
+                <p><small><em>¡Elige una Ciudad para ver todos los Lugares que puedes Visitar!</em></small></p>
+                <p><b>⬇</b></p>
+                <%= form_tag places_path, method: 'get' do %>
+                  <%= select_tag(:city, options_for_select(@cities, selected: params[:option]), onchange: 'this.form.submit();', class: "form-control custom-select form-select",id: "form-home", prompt: 'Seleccionar Ciudad', include_blank: true ) %>
+                <% end %>
               </div>
             </div>
           </div>
