@@ -200,6 +200,7 @@ category5 = Category.create(name: "Servicios")
 
 user1 = User.create(
   email: "asdfgh123x20@gmail.com",
+  password:"123123",
   first_name: "Anderson",
   last_name: "Rodas Morant",
   phone_number: "75028136",
@@ -211,6 +212,7 @@ user1.photo.attach(io: file, filename: "perfil1_vxjhej.jpg")
 
 user2 = User.create(
   email: "rodascruzsergio@gmail.com",
+  password:"123123",
   first_name: "Sergio",
   last_name: "Cruz",
   phone_number: "69152811",
@@ -222,6 +224,7 @@ user2.photo.attach(io: file2, filename: "perfil2_mj2vtg.jpg")
 
 user3 = User.create(
   email: "bebichavez5@gmail.com",
+  password:"123123",
   first_name: "Roxana",
   last_name: "Chavez Ortuño",
   phone_number: "78192530",
@@ -233,6 +236,7 @@ user3.photo.attach(io: file3, filename: "perfil3_obrp0f.jpg")
 
 user4 = User.create(
   email: "oscar.d.rodas@gmail.com",
+  password:"123123",
   first_name: "Julio",
   last_name: "Montenegro",
   phone_number: "78451236",

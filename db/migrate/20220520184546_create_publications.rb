@@ -3,7 +3,10 @@ class CreatePublications < ActiveRecord::Migration[6.1]
     create_table :publications do |t|
       t.string :title
       t.text :description
-      t.integer :status, default: 0
+      t.string :address
+      t.integer :status, default: 1
+      t.float :latitude
+      t.float :longitude
 
       t.timestamps
     end

@@ -22,7 +22,6 @@ class PublicationsController < ApplicationController
     @publication = Publication.new(publication_params)
     @publication.user_id = current_user.id
     @publication.save
-    @publication.active!
 
     redirect_to publication_path(@publication)
   end
@@ -54,7 +53,7 @@ class PublicationsController < ApplicationController
   private
 
   def publication_params
-    params.require(:publication).permit(:title, :description, :category_id, :place_id, photos: [])
+    params.require(:publication).permit(:title, :description, :category_id, :place_id, :latitude, :longitude, photos: [])
   end
 
   def set_publication

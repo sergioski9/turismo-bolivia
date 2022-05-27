@@ -3,15 +3,15 @@
     <div id="carouselExampleFade" class="carousel slide carousel-fade text-shadow" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active" data-bs-interval="7000">
-          <div class="banner-place text-center text-shadow" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(<%= cl_image_path @place.photos.first.key %>);">
+          <div class="banner-place text-center text-shadow" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(<%= cl_image_path @place.photos&.first&.key %>);">
           </div>
         </div>
         <div class="carousel-item" data-bs-interval="7000">
-          <div class="banner-place text-center text-shadow" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(<%= cl_image_path @place.photos.second.key %>);">
+          <div class="banner-place text-center text-shadow" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(<%= cl_image_path @place.photos&.second&.key %>);">
           </div>
         </div>
         <div class="carousel-item text-center" data-bs-interval="7000">
-          <div class="banner-place text-center text-shadow" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(<%= cl_image_path @place.photos.last.key %>);">
+          <div class="banner-place text-center text-shadow" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(<%= cl_image_path @place.photos&.last&.key %>);">
           </div>
         </div>
       </div>
@@ -78,32 +78,6 @@
             </div>
           </div>
         </div>
-        <div class="border-top col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-bottom">
-          <div class="container-fluid">
-            <div class="row text-center text-shadow my-5">
-              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                <div class="row justify-content-center">
-                  <div class="col-12 col-sm-12 col-md-8 col-lg-7 col-xl-6">
-                    <h3 class="my-4">
-                      <strong>Recomendaciones</strong>
-                    </h3>
-                    <div class="card-place-show-recomendation">
-                      <img src="https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653513660/development/recomendaciones_jrfzwk.png" alt="ilustracion recomendacion">
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="border-end col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 my-3">
-                <h5 class="my-3"><strong>Principal</strong></h5>
-                <p><%= @place.recomendation %></p>
-              </div>
-              <div class="border-start col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 my-3">
-                <h5 class="my-3"><strong>Secundaria</strong></h5>
-                <p><%= @place.other_recomendation %></p>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -122,7 +96,7 @@
             </div>
           </div>
           <div class="container-photo-publications">
-            <img src="<%= cl_image_path publication.photos.first.key %>" alt="foto-de-publicacion">
+            <img src="<%= cl_image_path publication.photos&.first&.key %>" alt="foto-de-publicacion">
           </div>
           <div class="my-3 container-letters-publications">
             <p><%= publication.title.first(30) ... %></p>
@@ -136,6 +110,14 @@
         </div>
       <% end %>
     </div>
+
+    <div style="width: 100%; height: 600px;"
+      data-controller="mapbox"
+      data-mapbox-target="container"
+      data-mapbox-markers-value="<%= @markers.to_json %>"
+      data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+
     <div class="container-fluid text-shadow">
       <h4 class="text-center my-5 text-shadow"><strong>Ver todas las Publicaciones</strong></h4>
       <div class="text-center">
@@ -144,3 +126,31 @@
     </div>
   </section>
 </article>
+<section>
+  <div class="border-top col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-bottom">
+    <div class="container-fluid">
+      <div class="row text-center text-shadow my-5">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <div class="row justify-content-center">
+            <div class="col-12 col-sm-12 col-md-8 col-lg-7 col-xl-6">
+              <h3 class="my-4">
+                <strong>Recomendaciones</strong>
+              </h3>
+              <div class="card-place-show-recomendation">
+                <img src="https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653513660/development/recomendaciones_jrfzwk.png" alt="ilustracion recomendacion">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="border-end col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 my-3">
+          <h5 class="my-3"><strong>Principal</strong></h5>
+          <p><%= @place.recomendation %></p>
+        </div>
+        <div class="border-start col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 my-3">
+          <h5 class="my-3"><strong>Secundaria</strong></h5>
+          <p><%= @place.other_recomendation %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

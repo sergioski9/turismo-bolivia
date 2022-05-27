@@ -6,14 +6,24 @@
           <img src="https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653536773/development/pensando-new_cljdkr.jpg" alt="ilustracion pensando">
         </div>
         <h3 class="text-shadow text-center my-4">¡Crea una Publicación!</h3>
-        <%= simple_form_for @publication, wrapper: :floating_labels_form, wrapper_mappings: {
-    select: :floating_labels_select} do |f| %>
+        <%= simple_form_for @publication, wrapper: :floating_labels_form, wrapper_mappings: { select: :floating_labels_select} do |f| %>
           <%= f.input :title, label: "Título", placeholder: "Título" %>
           <%= f.input :description, label: "Descripción", placeholder: "Descripción" %>
-          <%= f.input :category_id, as: :select, collection: @categories, label: "Categorias", placeholder: "Elegir el lugar de la Publicación" %>
-          <%= f.input :place_id, as: :select, collection: @places, label: "Lugares", placeholder: "Elegir la categoria de su Publicación" %>
+          <%= f.input :category_id, as: :select, collection: @categories, label: "Categorias", prompt: "Elegir el lugar de la Publicación" %>
+          <%= f.input :place_id, as: :select, collection: @places, label: "Lugares", prompt: "Elegir la categoria de su Publicación" %>
           <%= f.input :photos, label: "Fotos (Máximo 3)", as: :file, input_html: { multiple: true } %>
-          <%= f.submit class: "btn btn-outline-primary d-inline-block", value: "Crear Publicación" %>
+          <div class="mt-4 px-2"
+            data-controller="mapbox"
+            data-mapbox-new-marker-value="true"
+            data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY']%>" >
+            <%= f.input :latitude, label: false, input_html: { data: { mapbox_target: "latitude" }, class:"d-none" }%>
+            <%= f.input :longitude, label: false, input_html: { data: { mapbox_target: "longitude" },class:"d-none" }%>
+            <h5>
+              Arrastra el marcador hasta la ubicación exacta de tu vivienda
+            </h5>
+            <div style="width: 100%; height: 250px;" data-mapbox-target="container"></div>
+          </div>
+          <%= f.submit class: "btn btn-outline-primary d-inline-block disabled", id:"publication_submit_btn", value: "Crear Publicación" %>
           <%= link_to "Regresar", root_path, class: "btn btn-outline-primary d-inline-block mx-4 px-4"  %>
         <% end %>
       </div>

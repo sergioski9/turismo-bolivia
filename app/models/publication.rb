@@ -6,8 +6,10 @@ class Publication < ApplicationRecord
   has_many :review_publications, dependent: :destroy
   has_many_attached :photos, dependent: :destroy
 
+  geocoded_by :address
+
   validates :title, :description, presence: true
 
-  enum status: [ :pending, :active, :deleted ], _default: :pending
+  enum status: [ :pending, :active, :deleted ], _default: :active
 
 end

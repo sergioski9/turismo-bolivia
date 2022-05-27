@@ -66,6 +66,8 @@ ActiveRecord::Schema.define(version: 2022_05_25_010308) do
     t.string "title"
     t.text "description"
     t.integer "status", default: 0
+    t.float "latitude"
+    t.float "longitude"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
