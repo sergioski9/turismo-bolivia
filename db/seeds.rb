@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
+puts "Creando espejillos"
 place1 = Place.create(
   name: "Espejillos",
   description: "Espejillos es la puerta de entrada al Parque Nacional Amboró, el lugar es un balneario formado por cascadas y saltos de agua rodeado de una vegetación selvática. Un lugar ideal para disfrutar del agua y las caminatas en medio de la naturaleza. Espejillos es parte de una reserva natural que protege el ambiente con importante diversidad de flora y fauna.",
@@ -17,6 +17,16 @@ place1 = Place.create(
   city: "Santa Cruz de la Sierra",
   rating: 4,
 )
+e_counter = 0
+["https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653506118/development/espejillos1.jpg",
+"https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653506120/development/espejillos2.jpg",
+"https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653506123/development/espejillos3.jpg"].map do |image|
+  e_counter += 1
+  file = URI.open(image)
+  place1.photos.attach(io: file, filename: "espejillos#{e_counter}.jpg")
+end
+
+puts "Creando Río Madre de Dios"
 
 place2 = Place.create(
   name: "Río Madre de Dios",
@@ -28,7 +38,17 @@ place2 = Place.create(
   city: "Pando",
   rating: 3,
 )
+e_counter = 0
+["https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653506285/development/rio_madre_de_dios1.jpg",
+"https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653506287/development/rio_madre_de_dios2.jpg",
+"https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653506289/development/rio_madre_de_dios3.jpg"].map do |image|
+  e_counter += 1
+  file = URI.open(image)
+  place2.photos.attach(io: file, filename: "rio_madre_de_dios#{e_counter}.jpg")
+end
 
+
+puts "Parque Nacional Sajama"
 place3 = Place.create(
   name: "Parque Nacional Sajama",
   description: "Se encuentra en la provincia Sajama, en plena Cordillera Occidental de los Andes y es la primera Área Protegida del país dedicada a la conservación de los ecosistemas altoandinos. En el conjunto, como atractivo natural se destaca el Nevado Sajama, volcán inactivo, cuya altitud es de 6.542 msnm. Alrededor del mismo se extienden amplios bosques y praderas donde se observa fauna silvestre propia de la zona. También se puede observar los nevados Payachatas (Parinacota con 6.032 m.s.n.m.), el bosque de queñuas (árboles que crecen a mayor altitud en el mundo), la Laguna Huayñakota, Maya, la cadena de geisers de Juchusuma Sajama, vertientes en ebullición.",
@@ -39,6 +59,16 @@ place3 = Place.create(
   city: "Oruro",
   rating: 3,
 )
+e_counter = 0
+["https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653507526/development/parque_nacional_sajama1.jpg",
+"https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653507527/development/parque_nacional_sajama2.jpg",
+"https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653507529/development/parque_nacional_sajama3.jpg"].map do |image|
+  e_counter += 1
+  file = URI.open(image)
+  place3.photos.attach(io: file, filename: "parque_nacional_sajama#{e_counter}.jpg")
+end
+
+puts "Reserva Biosfera de Beni"
 
 place4 = Place.create(
   name: "Reserva Biosfera de Beni",
@@ -51,6 +81,16 @@ place4 = Place.create(
   rating: 4,
 )
 
+e_counter = 0
+["https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653507745/development/biosfera_beni1.jpg",
+"https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653507746/development/biosfera_beni2.jpg",
+"https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653507747/development/biosfera_beni3.jpg"].map do |image|
+  e_counter += 1
+  file = URI.open(image)
+  place4.photos.attach(io: file, filename: "biosfera_beni#{e_counter}.jpg")
+end
+
+
 place5 = Place.create(
   name: "La Casa Nacional de Moneda",
   description: "Sin duda el lugar turístico más importante que visitar en Potosí es la Casa Nacional de la Moneda. Pero vayamos con lo importante, que es la Casa Nacional de la Moneda, un lugar clave para entender el peso que tuvo la ciudad de Potosí en la historia no sólo de Bolivia, sino del mundo. Dentro trabajaban muchísimos esclavos (tanto indígenas como africanos) acuñando monedas con la plata que se extraía (también forzosamente) del Cerro Rico. La primera casa se fundó en el año 1572, pero la fuerte demanda de la Casa Real de España hizo que se quedara pequeña y se contruyera la que conocemos hoy en día. El museo que visitar (coste de 40 bolivianos para extranjeros, como 5€, con un tour incluido).",
@@ -61,6 +101,16 @@ place5 = Place.create(
   city: "Potosí",
   rating: 4,
 )
+
+
+e_counter = 0
+["https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653507987/development/casa_de_la_moneda1.jpg",
+"https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653507988/development/casa_de_la_moneda2.jpg",
+"https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653507990/development/casa_de_la_moneda3.jpg"].map do |image|
+  e_counter += 1
+  file = URI.open(image)
+  place5.photos.attach(io: file, filename: "casa_de_la_moneda#{e_counter}.jpg")
+end
 
 place6 = Place.create(
   name: "Criptas Ocultas",
@@ -73,6 +123,15 @@ place6 = Place.create(
   rating: 3,
 )
 
+
+e_counter = 0
+["https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653508153/development/criptas_ocultas1.jpg",
+"https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653508155/development/criptas_ocultas2.jpg",
+"https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653508156/development/criptas_ocultas3.jpg"].map do |image|
+  e_counter += 1
+  file = URI.open(image)
+  place6.photos.attach(io: file, filename: "criptas_ocultas#{e_counter}.jpg")
+end
 place7 = Place.create(
   name: "Pico Tunari",
   description: "Paracualquier amante de la naturaleza o senderismo es una ascension muy recomendable, tanto con un guia de montaña como con un grupo de amigos con nociones sobre alpinismo. Es una ascencion muy facil de realizar, lo unico complicado es la altitud que te resta empuje en la subida, una vez que coronas la cumbre las vistas son marivillosas. Se pasan cerca de dos lagunas de alta montaña la del toro y la macho, en la cara sur hay posibilidad de hacer escalada. Si el tiempo acompaña no hace frio pero es muy cambiante y es bueno llevar ropa de abrigo a la caida del sol las temperaturas bajan de manera muy fuerte. Mucho cuidado con el mal de altura.",
@@ -83,6 +142,15 @@ place7 = Place.create(
   city: "Cochabamba",
   rating: 4,
 )
+
+e_counter = 0
+["https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653508249/development/pico_tunari1.jpg",
+"https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653508250/development/pico_tunari2.jpg",
+"https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653508346/development/pico_tunari3.jpg"].map do |image|
+  e_counter += 1
+  file = URI.open(image)
+  place7.photos.attach(io: file, filename: "pico_tunari#{e_counter}.jpg")
+end
 
 place8 = Place.create(
   name: "Museo Panteológico y Arquelógico",
@@ -95,6 +163,16 @@ place8 = Place.create(
   rating: 3,
 )
 
+
+e_counter = 0
+["https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653508589/development/museo_panteologico1.jpg",
+"https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653508591/development/museo_panteologico2.jpg",
+"https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653508593/development/museo_panteologico3.jpg"].map do |image|
+  e_counter += 1
+  file = URI.open(image)
+  place8.photos.attach(io: file, filename: "museo_panteologico#{e_counter}.jpg")
+end
+
 place9 = Place.create(
   name: "Tiwanaku",
   description: "El Centro Espiritual y Político de la Cultura Tiwanaku es Patrimonio Mundial desde el año 2000, debido a su Valor Universal Excepcional expresado en la concepción y maestría constructiva de los templos y de la estatuaria monumental. Su unidad reside también en los conocimientos de una sociedad multiétnica, dirigida por líderes políticos y espirituales durante más de 1000 años.",
@@ -105,6 +183,14 @@ place9 = Place.create(
   city: "La Paz",
   rating: 4,
 )
+e_counter = 0
+["https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653508748/development/tiwanaku1.jpg",
+"https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653508750/development/tiwanaku2.jpg",
+"https://res.cloudinary.com/dgzbf6kp2/image/upload/v1653508752/development/tiwanaku3.jpg"].map do |image|
+  e_counter += 1
+  file = URI.open(image)
+  place9.photos.attach(io: file, filename: "tiwanaku#{e_counter}.jpg")
+end
 
 category1 = Category.create(name: "Restaurantes")
 category2 = Category.create(name: "Hoteles")
