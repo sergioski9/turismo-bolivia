@@ -131,7 +131,11 @@
           <div class="my-3 container-letters-publications">
             <p><%= publication.title.first(30) ... %></p>
             <p><%= publication.description.first(30) %> ...</p>
-            <p class="border-top border-bottom py-2 my-3 text-muted">personas que se han contactado: <b><%= publication.counter %></b></p>
+            <div class="border-top border-bottom">
+              <div class="margin-auto rounded-pill my-3 tags-publications">
+                <p>personas que se han contactado: <b><%= publication.counter %></b></p>
+              </div>
+            </div>
             <p class="p-1 text-center"><small><em class="text-muted">Created <%=  distance_of_time_in_words_to_now(publication.created_at) %></em></small></p>
             <div class="text-center">
               <%= link_to "Ver Publicacion", publication_path(publication), class: "mt-3 btn btn-outline-dark rounded-pill px-4" %>

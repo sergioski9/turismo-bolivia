@@ -60,16 +60,9 @@
           <h5 class="my-3"><strong><%= @publication.user.email %></strong></h5>
         </div>
         <div data-controller="counter" class="my-5 container" data-counter-id-value="<%= @publication.id %>">
-          <p class="my-5">
-            <small>
-              <em class="text-muted">
-                Personas que se han contactado:
-                <b class="count" data-counter-target="show">
-                  0
-                </b>
-              </em>
-            </small>
-          </p>
+          <div class="text-center p-2 margin-auto rounded-pill my-5 tags-publications d-inline-block px-5">
+            <p class="my-1">personas que se han contactado: <b><%= @publication.counter %></b></p>
+          </div>
           <%= link_to "Contactar", "https://api.whatsapp.com/send?phone=+591#{@publication.user.phone_number}&text=Hola,%20vi%20tu%20publicacion%20y%20quisiera%20saber%20mas%20informacion", target: "_blank", class: "link px-5 btn btn-outline-dark rounded-pill", data: {action: "click->counter#increaseCounter"} %>
         </div>
       </div>
@@ -111,7 +104,11 @@
                       <h4 class="text-shadow"><%= publication.title.capitalize %></h4>
                       <p><%= publication.description%></p>
                       <p class="mt-2">Ubicación: <%= publication.place.name %></p>
-                      <p class="border-top border-bottom py-2 my-3 text-muted">personas que se han contactado: <b><%= publication.counter %></b></p>
+                      <div class="border-top border-bottom">
+                        <div class="text-center margin-auto rounded-pill my-3 tags-publications">
+                          <p>personas que se han contactado: <b><%= publication.counter %></b></p>
+                        </div>
+                      </div>
                       <p class="p-1 text-center"><small><em class="text-muted">Created <%=  distance_of_time_in_words_to_now(publication.created_at) %></em></small></p>
                       <div class="text-center">
                         <%= link_to "Ver Publicacion", publication_path(publication), class: "mt-3 px-4 rounded-pill btn btn-outline-dark" %>
