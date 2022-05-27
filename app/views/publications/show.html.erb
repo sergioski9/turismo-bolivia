@@ -59,7 +59,7 @@
           </h4>
           <h5 class="my-3"><strong><%= @publication.user.email %></strong></h5>
         </div>
-        <div data-controller="counter" class="my-5 container">
+        <div data-controller="counter" class="my-5 container" data-counter-id-value="<%= @publication.id %>">
           <p class="my-5">
             <small>
               <em class="text-muted">

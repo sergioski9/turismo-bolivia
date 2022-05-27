@@ -6,7 +6,9 @@ Rails.application.routes.draw do
     resources :review_places, only: :create
   end
 
-  resources :publications
+  resources :publications do
+    get :increase_counter
+  end
 
   resources :review_publications, only: :destroy
 

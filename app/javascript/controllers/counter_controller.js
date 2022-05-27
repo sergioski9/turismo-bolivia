@@ -2,9 +2,12 @@ import { Controller } from "stimulus"
 
 export default class extends Controller {
   static targets = ["show"]
+  static values = {
+    id: String
+  };
 
   connect() {
-    console.log('Hello, Counter!')
+    console.log('>>>>', this.idValue)
     console.log('Hello', this.showTarget.innerText)
   }
 
@@ -15,13 +18,16 @@ export default class extends Controller {
     this.saveInDatabase(count)
   }
 
-  saveInDatabase(value){
-    Rails.ajax({
-      url: 'action',
-      type: 'POST',
-      success: (data) => {
-        this.showTarget.innerHTML = value
-      },
-    });
+  saveInDatabase(value) {
+    fetch(`/publications/${this.idValue}/increase_counter`,
+      {
+        method: 'GET',
+      })
+      .then((response) => response.json())
+      .then((data) => {
+        const newValue = data.new_counter
+        console.log(">>>>>", data, " >>>> ", newValue)
+        this.showTarget.innerHTML = newValue
+        })
   }
 }

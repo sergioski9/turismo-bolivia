@@ -1,6 +1,6 @@
 class PublicationsController < ApplicationController
   skip_before_action :authenticate_user!, except: [:edit, :destroy]
-  before_action :set_publication, only: [ :show, :edit, :update, :destroy, :increase_counter ]
+  before_action :set_publication, only: [ :show, :edit, :update, :destroy ]
 
   def index
     @publications = Publication.all
@@ -46,8 +46,12 @@ class PublicationsController < ApplicationController
   end
 
   def increase_counter
-    @publication.update(counter: params[:value]) if params[:value]
-    render json
+    @publication = Publication.find(params[:publication_id])
+    return if current_user == @publication.user
+
+    old_counter = @publication.counter
+    @publication.update(counter: old_counter + 1)
+    render json: { new_counter: @publication.counter }, status: 200
   end
 
   private
