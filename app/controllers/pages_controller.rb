@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home ]
+  skip_before_action :authenticate_user!, only: [ :home, :prueba ]
 
   def home
     @places = Place.all.take(4)
@@ -18,6 +18,10 @@ class PagesController < ApplicationController
         OR publications.user.last_name @@ :query \
       "
       @places = Place.joins([:publication, :place]).where(sql_query, query: "%#{params[:query]}%")
+    end
+
+    def prueba
+
     end
   end
 end
