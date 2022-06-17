@@ -1,0 +1,126 @@
+.title {
+  margin: 280px 50px;
+  width: 400px;
+  font-family: "Outfit";
+}
+
+.title h1 {
+  font-family: "Outfit";
+  font-weight: 700;
+  line-height: 38px;
+  font-size: 40px;
+}
+
+.title p {
+  font-family: "Outfit";
+  font-weight: 500;
+  line-height: 32px;
+  font-size: 18px;
+}
+
+.button {
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 18px;
+  background-color: #2C67DA;
+  box-shadow: 1px 1px 5px #2C67DA;
+}
+
+.button:hover {
+  background-color: #164bb4;
+}
+
+.image-position {
+  position: relative;
+}
+
+.image-bot img {
+  position: absolute;
+  object-fit: contain;
+  width: 350px;
+  height: 530px;
+  top: 130px;
+  left: 560px;
+  right: 100px;
+}
+
+.image-top img {
+  position: absolute;
+  object-fit: contain;
+  width: 350px;
+  height: 530px;
+  top: 212px;
+  left: 800px;
+  right: 150px;
+}
+
+.banner {
+  margin-top: 390px;
+  background-color: #1F242B;
+  width: 100%;
+  height: 350px;
+}
+
+.text {
+  padding-top: 110px;
+  margin-left: 40px;
+  color: white;
+  width: 520px;
+  font-family: "Outfit";
+}
+
+.text h4 {
+  font-family: "Outfit";
+  font-weight: 500;
+  line-height: 30px;
+}
+
+.tamaño {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  background-size: contain;
+}
+
+.t1 {
+  top: 1000px;
+  left: 820px;
+}
+
+.t4 {
+  top: 1000px;
+  left: 950px;
+  filter: drop-shadow(0px 30px 30px rgba(33, 38, 57, 0.12));
+}
+
+.t2 {
+  top: 1130px;
+  left: 950px;
+}
+
+.t3 {
+  top: 1130px;
+  left: 820px;
+}
+
+.back-text > div > div {
+  font-size: 14px;
+  color: white;
+  font-family: "Outfit";
+  line-height: 0;
+  margin-top: 90px;
+  margin-left: 30px;
+}
+
+.font-500 {
+  font-weight: 500;
+}
+
+.text-inf h3 {
+  margin-top: 100px;
+  font-family: "Outfit";
+  font-weight: 500;
+}
