@@ -74,7 +74,7 @@
       <p><small><em class="text-muted text-shadow">Presiona la imagen para mas informacion</em></small></p>
       <% @places.each do |place| %>
         <div class="my-5 col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3"  data-aos="fade-up" data-aos-duration="2000">
-          <a href="https://tourbolsergioski9.herokuapp.com/places/<%= place.id %>">
+          <a href="https://tourbol.onrender.com/places/<%= place.id %>">
             <div class="box-shadow cards-home" style="background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%), url('<%= cl_image_path place.photos.first.key %>');">
               <div class="text-shadow text-start mx-2 cards-letters-home">
                 <p><b><%= place.name %></b></p>
