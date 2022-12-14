@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: turismo_bolivia_project_production
-  username: turismo_bolivia_project
-  password: <%= ENV['TURISMO_BOLIVIA_PROJECT_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
