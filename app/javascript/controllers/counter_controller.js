@@ -4,11 +4,6 @@ export default class extends Controller {
   static targets = ["show"]
   static values = {
     id: String
-  };
-
-  connect() {
-    console.log('>>>>', this.idValue)
-    console.log('Hello', this.showTarget.innerText)
   }
 
   increaseCounter(){
