@@ -7,7 +7,7 @@
           <% @publications.each do |publication| %>
             <div class="my-4 mx-4 box-shadow bg-white col-11 col-sm-11 col-md-5 col-lg-5 col-xl-4 card-publications" data-aos="fade-up" data-aos-duration="2000">
               <div class="d-flex mr-2 my-2">
-                <div class="avatar-publications mx-2" style="background-image: url(<%= publication.user.photo.attached? ? cl_image_path(publication.user.photo.key) : 'https://res.cloudinary.com/dgzbf6kp2/image/upload/c_scale,h_1536,w_1920/v1652472231/development/ivoevb9zgmyu06e2bxa6zwf45kqt.jpg' %>)"></div>
+                <div class="avatar-publications mx-2" style="background-image: url(<%= publication.user&.photo&.attached? ? cl_image_path(publication.user.photo.key) : 'https://res.cloudinary.com/dgzbf6kp2/image/upload/c_scale,h_1536,w_1920/v1652472231/development/ivoevb9zgmyu06e2bxa6zwf45kqt.jpg' %>)"></div>
                 <div class="container-header-publications">
                   <h6><%= publication.user.first_name %></h6>
                   <p><small class="text-muted"><%= publication.place.name %></small></p>
